@@ -1,2 +1,4 @@
 node_modules
-files/**
+files/expenses.xml
+files/expenses.xlsx
+files/expenses.csv
