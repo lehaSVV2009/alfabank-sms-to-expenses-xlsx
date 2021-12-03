@@ -3,6 +3,7 @@ const xml2js = require("xml2js");
 const moment = require("moment");
 const XLSX = require("xlsx");
 const json2csv = require("json2csv");
+const parseArgs = require("minimist");
 
 const EXPENSES_XML_PATH = __dirname + "/files/expenses.xml";
 const EXPENSES_CSV_PATH = __dirname + "/files/expenses.csv";
@@ -14,7 +15,8 @@ const EXPENSE_TYPES = {
   UNKNOWN: "UNKNOWN",
 };
 
-(async function (year, month) {
+const { year, month } = parseArgs(process.argv.slice(2));
+(async function (year = 2021, month = 'Apr') {
   const parser = new xml2js.Parser();
 
   try {
@@ -27,7 +29,7 @@ const EXPENSE_TYPES = {
   } catch (e) {
     console.error(e);
   }
-})(2021, "Apr");
+})(year, month);
 
 const formatExpenses = (expensesData, year = 2021, month = "Jan") => {
   return expensesData.smses.sms
