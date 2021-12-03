@@ -134,6 +134,12 @@ const formatMoney = (sum, currency) => {
   if (currency === "USD") {
     return `=${formattedSum}*Доллар`;
   }
+  if (currency === "EUR") {
+    return `=${formattedSum}*Евро`;
+  }
+  if (currency === "RUR") {
+    return `=${formattedSum}*РосРубль`;
+  }
   return `${formattedSum} ${currency}`;
 };
 
